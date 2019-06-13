@@ -1,6 +1,6 @@
 # Magento 2 QuoteCleaner #
 
-Clean old quotes from Magento using consoel command
+Clean old quotes from Magento using console command
 
 # Install instructions #
 
