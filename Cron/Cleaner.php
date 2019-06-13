@@ -9,6 +9,8 @@ namespace Xigen\QuoteCleaner\Cron;
 class Cleaner
 {
     protected $logger;
+    protected $cleanerHelper;
+    protected $dateTime;
 
     /**
      * Constructor
@@ -17,10 +19,12 @@ class Cleaner
      */
     public function __construct(
         \Psr\Log\LoggerInterface $logger,
-        \Xigen\QuoteCleaner\Helper\Cleaner $cleanerHelper
+        \Xigen\QuoteCleaner\Helper\Cleaner $cleanerHelper,
+        \Magento\Framework\Stdlib\DateTime\DateTime $dateTime
     ) {
         $this->logger = $logger;
         $this->cleanerHelper = $cleanerHelper;
+        $this->dateTime = $dateTime;
     }
 
     /**
@@ -30,6 +34,15 @@ class Cleaner
      */
     public function execute()
     {
-        // $this->logger->addInfo("Cronjob Cleaner is executed.");
+        if ($this->cleanerHelper->$this->getCron()) {
+            $this->logger->addInfo((string) __('[%1] Cleaner Cronjob Start', $this->dateTime->gmtDate()));
+            $this->logger->addInfo('Cleaning customer quotes');
+            $result = $this->cleanerHelper->cleanCustomerQuotes();
+            $this->logger->addInfo((string) __('Result: in %1 cleaned %2 customer quotes', $result['quote_duration'], $result['quote_count']));
+            $this->logger->addInfo('Cleaning anonymous quotes');
+            $result = $this->cleanerHelper->cleanAnonymousQuotes();
+            $this->logger->addInfo((string) __('Result: in %1 cleaned %2 anonymous quotes', $result['quote_duration'], $result['quote_count']));
+            $this->logger->addInfo((string) __('[%1] Cleaner Cronjob Finish', $this->dateTime->gmtDate()));
+        }
     }
 }

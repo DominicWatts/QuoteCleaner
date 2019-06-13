@@ -6,6 +6,7 @@
 				<clean_quoter_older_than>7</clean_quoter_older_than>
 				<clean_anonymous_quotes_older_than>7</clean_anonymous_quotes_older_than>
 				<limit>1000</limit>
+				<cron>0</cron>
 			</quote_cleaner>
 		</quote_cleaner>
 	</default>

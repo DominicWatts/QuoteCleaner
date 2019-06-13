@@ -17,3 +17,5 @@ Clean old quotes from Magento using console command
 Configuration options to limit impact of console script
 
 ![Screenshot](https://i.snag.gy/WKMAXQ.jpg)
+
+Or alternatively allow cron task to run

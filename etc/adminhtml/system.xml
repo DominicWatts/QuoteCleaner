@@ -18,9 +18,13 @@
 					<label>Clean anonymous quotes older than</label>
 					<comment>In days. (Minimum recommended number of days is 7)</comment>
 				</field>
-				<field id="limit" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+				<field id="limit" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30" translate="label" type="text">
 					<label>Limit number of quotes to clear per cron run</label>
 					<comment>Maximum recommended number is 50000</comment>
+				</field>
+				<field id="cron" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40" translate="label" type="select">
+					<label>Cron</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
 				</field>
 			</group>
 		</section>

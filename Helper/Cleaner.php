@@ -14,6 +14,7 @@ class Cleaner extends AbstractHelper
     const CONFIG_XML_OLDER_THAN = 'quote_cleaner/quote_cleaner/clean_quoter_older_than';
     const CONFIG_XML_ANONYMOUS_OLDER_THAN = 'quote_cleaner/quote_cleaner/clean_anonymous_quotes_older_than';
     const CONFIG_XML_LIMIT = 'quote_cleaner/quote_cleaner/limit';
+    const CONFIG_XML_CRON = 'quote_cleaner/quote_cleaner/cron';
 
     private $logger;
     private $limit;
@@ -66,6 +67,15 @@ class Cleaner extends AbstractHelper
     }
 
     /**
+     * Get cron
+     * @return string
+     */
+    public function getCron()
+    {
+        return $this->scopeConfig->getValue(self::CONFIG_XML_CRON, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
      * Initiate variables
      * @return void
      */
@@ -78,7 +88,6 @@ class Cleaner extends AbstractHelper
         $this->startTime = time();
         $this->report = [];
     }
-    
 
     /**
      * Clean customer quotes
