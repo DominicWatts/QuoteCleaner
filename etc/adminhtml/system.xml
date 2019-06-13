@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="xigen" sortOrder="500" translate="label">
+			<label>Xigen</label>
+		</tab>
+		<section id="quote_cleaner" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+			<label>Quote Cleaner</label>
+			<tab>xigen</tab>
+			<resource>Xigen_QuoteCleaner::config_xigen_quotecleaner</resource>
+			<group id="quote_cleaner" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+				<label>Quote Cleaner</label>
+				<field id="clean_quoter_older_than" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+					<label>Clean customer quotes older than</label>
+					<comment>In days. (Minimum recommended number of days is 7)</comment>
+				</field>
+				<field id="clean_anonymous_quotes_older_than" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="text">
+					<label>Clean anonymous quotes older than</label>
+					<comment>In days. (Minimum recommended number of days is 7)</comment>
+				</field>
+				<field id="limit" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+					<label>Limit number of quotes to clear per cron run</label>
+					<comment>Maximum recommended number is 50000</comment>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<quote_cleaner>
+			<quote_cleaner>
+				<clean_quoter_older_than>7</clean_quoter_older_than>
+				<clean_anonymous_quotes_older_than>7</clean_anonymous_quotes_older_than>
+				<limit>1000</limit>
+			</quote_cleaner>
+		</quote_cleaner>
+	</default>
+</config>
