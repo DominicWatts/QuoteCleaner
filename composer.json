@@ -1,5 +1,5 @@
 {
-    "name": "xigen/module-quotecleaner",
+    "name": "dominicwatts/quotecleaner",
     "description": "Allows you to clean up the quote tables in a scheduler task.",
     "type": "magento2-module",
     "license": "proprietary",
