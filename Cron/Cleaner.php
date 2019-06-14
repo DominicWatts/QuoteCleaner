@@ -34,7 +34,7 @@ class Cleaner
      */
     public function execute()
     {
-        if ($this->cleanerHelper->$this->getCron()) {
+        if ($this->cleanerHelper->getCron()) {
             $this->logger->addInfo((string) __('[%1] Cleaner Cronjob Start', $this->dateTime->gmtDate()));
             $this->logger->addInfo('Cleaning customer quotes');
             $result = $this->cleanerHelper->cleanCustomerQuotes();

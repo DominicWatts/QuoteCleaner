@@ -9,7 +9,7 @@
             "email": "dominic@xigen.co.uk"
         }
     ],
-    "version": "1.0.2",
+    "version": "1.0.3",
     "minimum-stability": "dev",
     "require": {},
     "autoload": {
