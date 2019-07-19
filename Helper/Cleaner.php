@@ -16,17 +16,61 @@ class Cleaner extends AbstractHelper
     const CONFIG_XML_LIMIT = 'quote_cleaner/quote_cleaner/limit';
     const CONFIG_XML_CRON = 'quote_cleaner/quote_cleaner/cron';
 
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
     private $logger;
+
+    /**
+     * @var int
+     */
     private $limit;
+
+    /**
+     * @var \Magento\Framework\DB\Adapter\AdapterInterface
+     */
     private $connection;
+
+    /**
+     * @var \Magento\Framework\App\ResourceConnection
+     */
     private $resource;
+
+    /**
+     * @var null
+     */
     private $startTime = null;
+
+    /**
+     * @var null
+     */
     private $endTime = null;
+
+    /**
+     * @var array
+     */
     private $report = [];
 
     /**
+     * @var int
+     */
+    private $customerOlderThan;
+
+    /**
+     * @var int
+     */
+    private $anonymousOlderThan;
+
+    /**
+     * @var string
+     */
+    private $tableName;
+
+    /**
+     * Cleaner constructor.
      * @param \Magento\Framework\App\Helper\Context $context
      * @param \Psr\Log\LoggerInterface $logger
+     * @param \Magento\Framework\App\ResourceConnection $resource
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
@@ -45,7 +89,10 @@ class Cleaner extends AbstractHelper
      */
     public function getQuotesOlderThan()
     {
-        return $this->scopeConfig->getValue(self::CONFIG_XML_OLDER_THAN, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(
+            self::CONFIG_XML_OLDER_THAN,
+            ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**
@@ -54,7 +101,10 @@ class Cleaner extends AbstractHelper
      */
     public function getAnonymousQuotesOlderThan()
     {
-        return $this->scopeConfig->getValue(self::CONFIG_XML_ANONYMOUS_OLDER_THAN, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(
+            self::CONFIG_XML_ANONYMOUS_OLDER_THAN,
+            ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**
@@ -63,7 +113,10 @@ class Cleaner extends AbstractHelper
      */
     public function getLimit()
     {
-        return $this->scopeConfig->getValue(self::CONFIG_XML_LIMIT, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(
+            self::CONFIG_XML_LIMIT,
+            ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**
@@ -72,7 +125,10 @@ class Cleaner extends AbstractHelper
      */
     public function getCron()
     {
-        return $this->scopeConfig->getValue(self::CONFIG_XML_CRON, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(
+            self::CONFIG_XML_CRON,
+            ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**
