@@ -18,11 +18,43 @@ class Clean extends Command
     const CLEAN_ARGUMENT = 'clean';
     const LIMIT_OPTION = 'limit';
 
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
     private $logger;
+
+    /**
+     * @var \Magento\Framework\App\State
+     */
     private $state;
+
+    /**
+     * @var \Magento\Framework\Stdlib\DateTime\DateTime
+     */
     private $dateTime;
+
+    /**
+     * @var \Xigen\QuoteCleaner\Helper\Cleaner
+     */
     private $cleanerHelper;
 
+    /**
+     * @var InputInterface
+     */
+    protected $input;
+
+    /**
+     * @var OutputInterface
+     */
+    protected $output;
+
+    /**
+     * Clean constructor.
+     * @param \Psr\Log\LoggerInterface $logger
+     * @param \Magento\Framework\App\State $state
+     * @param \Magento\Framework\Stdlib\DateTime\DateTime $dateTime
+     * @param \Xigen\QuoteCleaner\Helper\Cleaner $cleanerHelper
+     */
     public function __construct(
         \Psr\Log\LoggerInterface $logger,
         \Magento\Framework\App\State $state,
@@ -54,10 +86,18 @@ class Clean extends Command
             $this->output->writeln((string) __('[%1] Start', $this->dateTime->gmtDate()));
             $this->output->writeln('Cleaning customer quotes');
             $result = $this->cleanerHelper->cleanCustomerQuotes();
-            $this->output->writeln((string) __('Result: in %1 cleaned %2 customer quotes', $result['quote_duration'], $result['quote_count']));
+            $this->output->writeln((string) __(
+                'Result: in %1 cleaned %2 customer quotes',
+                $result['quote_duration'],
+                $result['quote_count']
+            ));
             $this->output->writeln('Cleaning anonymous quotes');
             $result = $this->cleanerHelper->cleanAnonymousQuotes();
-            $this->output->writeln((string) __('Result: in %1 cleaned %2 anonymous quotes', $result['quote_duration'], $result['quote_count']));
+            $this->output->writeln((string) __(
+                'Result: in %1 cleaned %2 anonymous quotes',
+                $result['quote_duration'],
+                $result['quote_count']
+            ));
             $this->output->writeln((string) __('[%1] Finish', $this->dateTime->gmtDate()));
         }
     }
