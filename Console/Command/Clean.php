@@ -86,12 +86,18 @@ class Clean extends Command
             $this->output->writeln((string) __('[%1] Start', $this->dateTime->gmtDate()));
             $this->output->writeln('Cleaning customer quotes');
             $result = $this->cleanerHelper->cleanCustomerQuotes();
-            $this->output->writeln((string) __('Result: in %1 cleaned %2 customer quotes', $result['quote_duration'],
-                $result['quote_count']));
+            $this->output->writeln((string) __(
+                'Result: in %1 cleaned %2 customer quotes',
+                $result['quote_duration'],
+                $result['quote_count']
+            ));
             $this->output->writeln('Cleaning anonymous quotes');
             $result = $this->cleanerHelper->cleanAnonymousQuotes();
-            $this->output->writeln((string) __('Result: in %1 cleaned %2 anonymous quotes', $result['quote_duration'],
-                $result['quote_count']));
+            $this->output->writeln((string) __(
+                'Result: in %1 cleaned %2 anonymous quotes',
+                $result['quote_duration'],
+                $result['quote_count']
+            ));
             $this->output->writeln((string) __('[%1] Finish', $this->dateTime->gmtDate()));
         }
     }
