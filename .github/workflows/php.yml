@@ -1,0 +1,12 @@
+name: PHPCS
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: PHPCS
+      run: docker run --rm -v $PWD:/code domw/phpcs phpcs --colors --standard=Magento2 --report=full,summary,gitblame --extensions=php,phtml ./
+      continue-on-error: true
+    - name: compatibility
+      run: docker run --rm -v $PWD:/code domw/phpcompatibility phpcs --standard=PHPCompatibility --runtime-set testVersion 7.0-7.4 --colors --warning-severity=0 --report=full,summary --extensions=php,phtml ./

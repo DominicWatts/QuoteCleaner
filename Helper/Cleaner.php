@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Xigen\QuoteCleaner\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
