@@ -10,7 +10,7 @@ Clean old quotes from Magento using console command
 
 # Usage instructions #
 
-xigen:quote:cleaner [-l|--limit [LIMIT]] [--] <clean>`
+`xigen:quote:cleaner [-l|--limit [LIMIT]] [--] <clean>`
 
 `php bin/magento xigen:quote:cleaner clean`
 
